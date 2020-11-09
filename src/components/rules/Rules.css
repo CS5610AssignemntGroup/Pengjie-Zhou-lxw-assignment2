@@ -7,11 +7,12 @@ section {
 }
 
 @media (max-width: 800px) {
-  .rules, section {
-    padding: 0 2rem 0 1.5rem;
-  }
+    .rules,
+    section {
+        padding: 0 2rem 0 1.5rem;
+    }
 }
 
 .about {
-  max-width: 900px;
+    max-width: 900px;
 }
