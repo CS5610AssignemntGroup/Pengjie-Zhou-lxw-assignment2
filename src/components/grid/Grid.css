@@ -11,5 +11,6 @@
 .Grid {
     display: grid;
     text-align: center;
-    left: 100px;
+    align-items: center;
+    justify-content: center;
 }
