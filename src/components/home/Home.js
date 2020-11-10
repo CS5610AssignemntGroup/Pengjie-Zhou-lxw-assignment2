@@ -10,25 +10,21 @@ class Home extends Component {
         this.state = {
             size: [0, 0],
         };
-
-        this.handleColumnChange = this.handleColumnChange.bind(this);
-        this.handleRowChange = this.handleRowChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleRowChange(e) {
+    handleRowChange = e => {
         let newSize = this.state.size;
         newSize[0] = parseInt(e.target.value);
         this.setState({ size: newSize });
-    }
+    };
 
-    handleColumnChange(e) {
+    handleColumnChange = e => {
         let newSize = this.state.size;
         newSize[1] = parseInt(e.target.value);
         this.setState({ size: newSize });
-    }
+    };
 
-    handleSubmit(e) {
+    handleSubmit = e => {
         let size = this.state.size;
         this.props.inputSize(size);
 
@@ -38,7 +34,7 @@ class Home extends Component {
             e.preventDefault();
             this.props.history.push('/game');
         }
-    }
+    };
 
     render() {
         return (

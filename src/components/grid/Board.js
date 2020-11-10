@@ -15,30 +15,22 @@ class Board extends Component {
             generation: 0,
         };
         console.log('state', this.state);
-        this.makeGrid = this.makeGrid.bind(this);
-        this.step = this.step.bind(this);
-        this.count = this.count.bind(this);
-        this.seed = this.seed.bind(this);
-        this.play = this.play.bind(this);
-        this.pause = this.pause.bind(this);
-        this.toggleCell = this.toggleCell.bind(this);
-        this.reset = this.reset.bind(this);
     }
 
     componentDidMount() {
         this.reset();
     }
 
-    makeGrid() {
+    makeGrid = () => {
         const { columns, rows } = this.state;
         let grid = new Array(columns);
         for (let i = 0; i < grid.length; i++) {
             grid[i] = new Array(rows);
         }
         return grid;
-    }
+    };
 
-    step() {
+    step = () => {
         let next = this.makeGrid();
         const { grid, columns, rows, generation } = this.state;
 
@@ -57,9 +49,9 @@ class Board extends Component {
             }
         }
         this.setState({ grid: next, generation: generation + 1 });
-    }
+    };
 
-    count(grid, x, y) {
+    count = (grid, x, y) => {
         const { columns, rows } = this.state;
         let sum = 0;
         for (let i = -1; i < 2; i++) {
@@ -73,9 +65,9 @@ class Board extends Component {
 
         sum -= grid[x][y];
         return sum;
-    }
+    };
 
-    seed() {
+    seed = () => {
         const { columns, rows, grid } = this.state;
         for (let i = 0; i < columns; i++) {
             for (let j = 0; j < rows; j++) {
@@ -83,19 +75,19 @@ class Board extends Component {
             }
         }
         this.setState({ grid });
-    }
+    };
 
-    play() {
+    play = () => {
         clearInterval(this.state.intervalId);
         const intervalId = setInterval(this.step, 100);
         this.setState({ intervalId });
-    }
+    };
 
-    pause() {
+    pause = () => {
         clearInterval(this.state.intervalId);
-    }
+    };
 
-    reset() {
+    reset = () => {
         const { columns, rows } = this.state;
         let grid = this.makeGrid();
         for (let i = 0; i < columns; i++) {
@@ -104,13 +96,13 @@ class Board extends Component {
             }
         }
         this.setState({ grid, generation: 0 });
-    }
+    };
 
-    toggleCell(x, y) {
+    toggleCell = (x, y) => {
         const { grid } = this.state;
         grid[x][y] = grid[x][y] ? 0 : 1;
         this.setState({ grid });
-    }
+    };
 
     render() {
         const { grid, columns, rows, generation } = this.state;
