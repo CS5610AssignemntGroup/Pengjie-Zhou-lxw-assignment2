@@ -23,5 +23,6 @@
     "rules": {
         "prettier/prettier": "error",
         "no-unused-vars": "warn"     
-    }
+    },
+    "parser": "babel-eslint"
 }

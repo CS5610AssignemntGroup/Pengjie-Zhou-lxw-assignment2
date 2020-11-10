@@ -1,16 +1,20 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Grid from './Grid';
+import PropTypes from 'prop-types';
 
 class Board extends Component {
     constructor(props) {
         super(props);
+        console.log('props', props);
         this.state = {
-            rows: 30,
-            columns: 30,
+            rows: props.size[0],
+            columns: props.size[1],
             grid: [],
             intervalId: 0,
             generation: 0,
         };
+        console.log('state', this.state);
         this.makeGrid = this.makeGrid.bind(this);
         this.step = this.step.bind(this);
         this.count = this.count.bind(this);
@@ -124,11 +128,20 @@ class Board extends Component {
                     rows={rows}
                     onToggleCell={this.toggleCell}
                 />
-                <p>see</p>
                 <p>Generation: {generation}</p>
             </div>
         );
     }
 }
 
-export default Board;
+Board.propTypes = {
+    size: PropTypes.array,
+};
+
+const mapStateToProps = state => {
+    return {
+        size: state.size,
+    };
+};
+
+export default connect(mapStateToProps)(Board);
