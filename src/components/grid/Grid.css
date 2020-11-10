@@ -1,0 +1,16 @@
+.Cell {
+    height: 14px;
+    width: 14px;
+    border: grey solid 1px;
+}
+
+.isActive {
+    background-color: black;
+}
+
+.Grid {
+    display: grid;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
