@@ -14,7 +14,7 @@ class NavbarReact extends React.Component {
                     <div>
                         <Navbar bg="dark" variant="dark">
                             <Navbar.Brand href="#home">
-                                Conwey Game
+                                Conway Game
                             </Navbar.Brand>
                             <Nav className="mr-auto">
                                 <Link className="nav-link" to="/">

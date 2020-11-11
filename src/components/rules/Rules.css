@@ -1,14 +1,18 @@
-section {
-    padding: 0 1.5rem;
+
+.content {
+  padding: 30px; 
+  max-width: 500px;
+  margin: auto;
+  margin-top: 20px;
+  background: rgb(219, 217, 217);
+
+}
+h4 {
+    text-align: center;
 }
 
-.rules {
-    padding: 0 1.5rem 0 0;
-}
-
-@media (max-width: 800px) {
-    .rules,
-    section {
-        padding: 0 2rem 0 1.5rem;
-    }
+@media screen and (max-width: 800px) {
+  .content {
+    width: 100%;
+  }
 }

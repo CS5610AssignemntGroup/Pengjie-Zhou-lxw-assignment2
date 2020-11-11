@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -83,6 +84,8 @@ class Board extends Component {
             livingCells: newLivingCells,
         });
     };
+  }
+
 
     countNeighbors = (grid, x, y) => {
         const { columns, rows } = this.state;
@@ -113,6 +116,26 @@ class Board extends Component {
                 grid[i][j].turnsLastAlive = grid[i][j].isAlive ? 0 : 9;
             }
         }
+      }
+    }
+    this.setState({
+      grid: next,
+      generation: generation + 1,
+      livingCells: newLivingCells,
+    });
+  };
+
+  countNeighbors = (grid, x, y) => {
+    const { columns, rows } = this.state;
+    let sum = 0;
+    for (let i = -1; i < 2; i++) {
+      for (let j = -1; j < 2; j++) {
+        let row = (x + i + rows) % rows;
+        let col = (y + j + columns) % columns;
+
+        sum += grid[row][col].isAlive;
+      }
+    }
 
         this.setState({ grid });
     };
@@ -182,6 +205,52 @@ class Board extends Component {
             </div>
         );
     }
+    this.props.inputFrequency(frequency);
+    e.preventDefault();
+  };
+
+  render() {
+    const {
+      grid,
+      columns,
+      rows,
+      generation,
+      livingCells,
+      displayHeatmap,
+    } = this.state;
+    return (
+        <div style={{ textAlign: 'center' }}>
+        <p>Living cells: {livingCells}</p>
+        <p>Generation: {generation}</p>
+        <>
+          <button onClick={this.step}>Step</button>
+          <button onClick={this.seed}>Randomize</button>
+          <button onClick={this.start}>Start</button>
+          <button onClick={this.pause}>Pause</button>
+          <button onClick={this.reset}>Reset</button>
+          <button onClick={this.toggleDisplay}>Change Display</button>
+        </>
+        <form onSubmit={this.handleFrequencySubmit}>
+          <label>
+            Frequency:
+            <input
+              type="number"
+              value={this.state.frequency}
+              onChange={this.handleFrequencyChange}
+            />
+          </label>
+          <input type="submit" value="Submit" />
+        </form>
+        <Grid
+          grid={grid}
+          columns={columns}
+          rows={rows}
+          onToggleCell={this.toggleCell}
+          displayHeatmap={displayHeatmap}
+        />
+      </div>
+    );
+  }
 }
 
 Board.propTypes = {
