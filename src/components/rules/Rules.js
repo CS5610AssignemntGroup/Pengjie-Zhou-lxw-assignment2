@@ -20,13 +20,14 @@ const Rules = () => {
             <div>
                 <h4>Core Functionality</h4>
                 <p>
-                    Conway’s Game of Life is based on a grid
-                    system. Every individual location on the grid represents a cell. 
-                    The game, or simulation, occurs over iterations, or generations. 
-                    After a generation, a cell may change from living or dead based 
-                    on how many living or dead neighbors it had in a previous iteration. 
-                    A neighbor is any immediately adjacent spot on the grid (horizontal, 
-                    or diagonal). We will understand this more clearly with the rules below.
+                    Conway’s Game of Life is based on a grid system. Every
+                    individual location on the grid represents a cell. The game,
+                    or simulation, occurs over iterations, or generations. After
+                    a generation, a cell may change from living or dead based on
+                    how many living or dead neighbors it had in a previous
+                    iteration. A neighbor is any immediately adjacent spot on
+                    the grid (horizontal, or diagonal). We will understand this
+                    more clearly with the rules below.
                 </p>
             </div>
 

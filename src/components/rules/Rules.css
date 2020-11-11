@@ -1,18 +1,16 @@
-
 .content {
-  padding: 30px; 
-  max-width: 500px;
-  margin: auto;
-  margin-top: 20px;
-  background: rgb(219, 217, 217);
-
+    padding: 30px;
+    max-width: 500px;
+    margin: auto;
+    margin-top: 20px;
+    background: rgb(219, 217, 217);
 }
 h4 {
     text-align: center;
 }
 
 @media screen and (max-width: 800px) {
-  .content {
-    width: 100%;
-  }
+    .content {
+        width: 100%;
+    }
 }
