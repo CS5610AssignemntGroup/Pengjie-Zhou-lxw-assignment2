@@ -1,70 +1,49 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Heroku Link
 
-In the project directory, you can run:
+https://cs5610assignment2.herokuapp.com/
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Writeup
 
-### `npm test`
+**What were some challenges you faced while making this app?**
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. How to identify at least 2 state update actions with state management tools. 
 
-### `npm run build`
+We identified the obvious action for passing the size from the home component to the board component, but we took a while to figure out that frequency form can be separated from the board component, in this way, we pass the data from child (frequency) to parent (board).
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2. How to display the heatmap.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+It was a challenge for us to visualize the heatmap. Based on the fact that the cells change color as they age, we have initiated an array of colors, by looping over the board. As for the cell, we designed a class for it to record its living status and the turns since its last living status. We calculated the turns according to the change of grid in every generation and display it. We offered the user a chance to switch from black-white display to heatmap display with a button.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+ 
 
-### `npm run eject`
+**Given more time, what additional features, functional or design changes would you make?**
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Additional features we could consider include:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. User can set a color them from different color shades for the heatmap;
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+2. User’s option to save the result of the display when they pause the game;
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+3.   User’s option to set the size of the cells;
 
-## Learn More
+4.   User can go forward and backward in the game.
+5.   User can change the initial living rate because 5% is too low for many cases.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+ 
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+**What assumptions did you make while working on this assignment?**
 
-### Code Splitting
+1.   100 * 100 is the maximum size we make the board before the game slows down;
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+2. The random generation of cells stops at the edges.
+3. In heatmap display,  the dead cells are set to die for 10 iteration at the beginning.
 
-### Analyzing the Bundle Size
+ 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+**How long did this assignment take to complete?**
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+   15 – 17 hours
