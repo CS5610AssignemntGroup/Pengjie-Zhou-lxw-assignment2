@@ -136,7 +136,7 @@ class Board extends Component {
         clearInterval(this.state.intervalId);
         const intervalId = setInterval(
             this.step,
-            this.props.frequency ? this.prop.frequency : 100
+            this.props.frequency ? this.props.frequency : 100
         );
         this.setState({ intervalId });
     };
