@@ -8,32 +8,23 @@ import Frequency from './Frequency';
 class Board extends Component {
     constructor(props) {
         super(props);
+        let rows = props.size ? props.size[0] : 10;
+        let columns = props.size ? props.size[1] : 20;
+        let grid = this.makeGrid(rows, columns);
+        this.seed(rows, columns, grid);
+        let cells = this.updateLivingCells(rows, columns, grid);
         this.state = {
-            rows: props.size ? props.size[0] : 10,
-            columns: props.size ? props.size[1] : 20,
-            grid: [],
+            rows: rows,
+            columns: columns,
+            grid: grid,
             intervalId: 0,
             generation: 0,
-            livingCells: 0,
+            livingCells: cells,
             displayHeatmap: 0,
         };
     }
 
-    componentDidMount() {
-        this.reset();
-        // // const { grid } = this.state;
-        // // console.log('after mount', grid);
-        // // this.seed();
-        // this.test();
-    }
-
-    // test() {
-    //     const { grid } = this.state;
-    //     console.log('test', grid);
-    // }
-
-    makeGrid = () => {
-        const { columns, rows } = this.state;
+    makeGrid = (rows, columns) => {
         let grid = new Array(rows);
         for (let i = 0; i < rows; i++) {
             grid[i] = new Array(columns);
@@ -43,29 +34,26 @@ class Board extends Component {
                 grid[i][j] = new Cell(0, 9);
             }
         }
-        // console.log('after make grid', grid);
         return grid;
     };
 
-    updateLivingCells = () => {
-        const { rows, columns, grid } = this.state;
+    updateLivingCells = (rows, columns, grid) => {
         let count = 0;
         for (let i = 0; i < rows; i++) {
             for (let j = 0; j < columns; j++) {
                 count += grid[i][j].isAlive;
             }
         }
-        this.setState({ livingCells: count });
+        return count;
     };
 
     step = () => {
-        let next = this.makeGrid();
         const { grid, columns, rows, generation, livingCells } = this.state;
+        let next = this.makeGrid(rows, columns);
         let newLivingCells = livingCells;
         for (let i = 0; i < rows; i++) {
             for (let j = 0; j < columns; j++) {
                 let neighbors = this.countNeighbors(grid, i, j);
-                // debugger;
                 if (grid[i][j].isAlive === 0) {
                     if (neighbors === 3) {
                         next[i][j].isAlive = 1;
@@ -85,7 +73,7 @@ class Board extends Component {
                     newLivingCells -= 1;
                 } else {
                     next[i][j].isAlive = grid[i][j].isAlive;
-                    next[i][j].turnsLastAlive = grid[i][j].turnsLastAlive + 1;
+                    next[i][j].turnsLastAlive = 0;
                 }
             }
         }
@@ -118,9 +106,7 @@ class Board extends Component {
         return sum;
     };
 
-    seed = () => {
-        const { columns, rows, grid } = this.state;
-        // console.log('in seed', this.state.grid);
+    seed = (rows, columns, grid) => {
         for (let i = 0; i < rows; i++) {
             for (let j = 0; j < columns; j++) {
                 grid[i][j].isAlive = Math.random() > 0.95 ? 1 : 0;
@@ -129,7 +115,6 @@ class Board extends Component {
         }
 
         this.setState({ grid });
-        this.updateLivingCells();
     };
 
     start = () => {
@@ -146,17 +131,9 @@ class Board extends Component {
     };
 
     reset = () => {
-        let grid = this.makeGrid();
-        // console.log('before reset', grid, this.state.grid);
+        const { rows, columns } = this.state;
+        let grid = this.makeGrid(rows, columns);
         this.setState({ grid: grid, generation: 0, livingCells: 0 });
-        // this.setState(state => {
-        //     return { grid: grid, generation: 0, livingCells: 0 };
-        // });
-        //
-        // this.setState(state => {
-        //     return { grid: state.grid };
-        // });
-        // console.log('after reset', grid, this.state.grid);
     };
 
     toggleCell = (x, y) => {
@@ -188,7 +165,6 @@ class Board extends Component {
                 <p>Living cells: {livingCells}</p>
                 <p>Generation: {generation}</p>
                 <button onClick={this.step}>Step</button>
-                <button onClick={this.seed}>Randomize</button>
                 <button onClick={this.start}>Start</button>
                 <button onClick={this.pause}>Pause</button>
                 <button onClick={this.reset}>Reset</button>
