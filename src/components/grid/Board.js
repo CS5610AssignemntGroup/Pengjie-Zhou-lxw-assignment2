@@ -56,7 +56,7 @@ class Board extends Component {
         for (let i = 0; i < rows; i++) {
             for (let j = 0; j < columns; j++) {
                 let neighbors = this.countNeighbors(grid, i, j);
-
+                debugger;
                 if (grid[i][j].isAlive === 0) {
                     if (neighbors === 3) {
                         next[i][j].isAlive = 1;
@@ -107,7 +107,7 @@ class Board extends Component {
         const { columns, rows, grid } = this.state;
         for (let i = 0; i < rows; i++) {
             for (let j = 0; j < columns; j++) {
-                grid[i][j].isAlive = Math.random() > 0.5 ? 1 : 0;
+                grid[i][j].isAlive = Math.random() > 0.95 ? 1 : 0;
                 grid[i][j].turnsLastAlive = grid[i][j].isAlive ? 0 : 9;
             }
         }
