@@ -77,6 +77,7 @@ Grid.propTypes = {
     columns: PropTypes.number,
     rows: PropTypes.number,
     onToggleCell: PropTypes.func,
+    displayHeatmap: PropTypes.number,
 };
 
 export default Grid;
