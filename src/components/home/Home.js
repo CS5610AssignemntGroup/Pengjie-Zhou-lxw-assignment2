@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { inputSize } from '../../actions';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
+import './Home.css';
 
 class Home extends Component {
     constructor(props) {
@@ -38,10 +39,15 @@ class Home extends Component {
 
     render() {
         return (
-            <div>
+            <div class="home">
+            <br />
+            <h3>Welcome to Conway's Game of Life </h3>
+            <br />
+            <h4>Please customize the board size: </h4>
+            <h6>(size minimum 10 x 10, maximum 100 x 100) </h6>
                 <form onSubmit={this.handleSubmit}>
                     <label className="label">
-                        Rows:
+                        Rows: {' '}
                         <input
                             className="input"
                             type="text"
@@ -50,7 +56,7 @@ class Home extends Component {
                         />
                     </label>
                     <label className="label">
-                        Columns:
+                       Columns: {' '}
                         <input
                             className="input"
                             type="text"
@@ -58,6 +64,7 @@ class Home extends Component {
                             onChange={this.handleColumnChange}
                         />
                     </label>
+                    <br />
                     <input type="submit" value="Submit" />
                 </form>
             </div>
