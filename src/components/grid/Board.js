@@ -109,7 +109,7 @@ class Board extends Component {
     seed = (rows, columns, grid) => {
         for (let i = 0; i < rows; i++) {
             for (let j = 0; j < columns; j++) {
-                grid[i][j].isAlive = Math.random() > 0.95 ? 1 : 0;
+                grid[i][j].isAlive = Math.random() > 0.5 ? 1 : 0;
                 grid[i][j].turnsLastAlive = grid[i][j].isAlive ? 0 : 9;
             }
         }
@@ -168,7 +168,9 @@ class Board extends Component {
                 <button onClick={this.start}>Start</button>
                 <button onClick={this.pause}>Pause</button>
                 <button onClick={this.reset}>Reset</button>
-                <button onClick={this.toggleDisplay}>Change Display</button>
+                <button onClick={this.toggleDisplay}>
+                    {displayHeatmap ? 'Show Black-White' : 'Show Heatmap'}
+                </button>
                 <Frequency />
                 <Grid
                     grid={grid}

@@ -25,22 +25,20 @@ It was a challenge for us to visualize the heatmap. Based on the fact that the c
 Additional features we could consider include:
 
 1. User can set a color them from different color shades for the heatmap;
-
 2. User’s option to save the result of the display when they pause the game;
-
-3.   User’s option to set the size of the cells;
-
+3. User’s option to set the size of the cells;
 4.   User can go forward and backward in the game.
-5.   User can change the initial living rate because 5% is too low for many cases.
+5.   User can change the initial living rate.
+6. User can randomize the grid with a button. At our current app, user need to go back to Home to set the row and column again to rerender new grid.
 
  
 
 **What assumptions did you make while working on this assignment?**
 
 1.   100 * 100 is the maximum size we make the board before the game slows down;
-
 2. The random generation of cells stops at the edges.
 3. In heatmap display,  the dead cells are set to die for 10 iteration at the beginning.
+4.   At the beginning, each cell have a 50% chance of being alive
 
  
 
