@@ -47,7 +47,7 @@ class Home extends Component {
             <h6>(size minimum 10 x 10, maximum 100 x 100) </h6>
                 <form onSubmit={this.handleSubmit}>
                     <label className="label">
-                        Rows: 
+                        Rows: {' '}
                         <input
                             className="input"
                             type="text"
@@ -56,7 +56,7 @@ class Home extends Component {
                         />
                     </label>
                     <label className="label">
-                        Columns: 
+                       Columns: {' '}
                         <input
                             className="input"
                             type="text"
