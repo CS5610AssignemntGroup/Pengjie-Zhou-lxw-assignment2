@@ -4,3 +4,10 @@ export const inputSize = size => {
         payload: size,
     };
 };
+
+export const inputFrequency = frequency => {
+    return {
+        type: 'FREQUENCY_INPUT',
+        payload: frequency,
+    };
+};

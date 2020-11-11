@@ -73,6 +73,7 @@ Home.propTypes = {
 const mapStateToProps = state => {
     return {
         size: state.size,
+        frequency: state.frequency,
     };
 };
 
