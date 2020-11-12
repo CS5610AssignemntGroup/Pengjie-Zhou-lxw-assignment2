@@ -1,12 +1,18 @@
 .content {
-    padding: 30px;
+    padding: 20px;
     max-width: 500px;
     margin: auto;
     margin-top: 20px;
     background: rgb(219, 217, 217);
+    font-weight:normal;
 }
+
 h4 {
     text-align: center;
+}
+
+ol {
+    font-weight: bold; 
 }
 
 @media screen and (max-width: 800px) {

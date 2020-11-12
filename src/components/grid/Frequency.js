@@ -21,6 +21,7 @@ class Frequency extends React.Component {
             alert('Frequency should be set between 50ms and 2000ms');
             this.setState({ frequency: 100 });
         }
+        alert('Frequency changed');
         this.props.inputFrequency(frequency);
         e.preventDefault();
     };
