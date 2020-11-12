@@ -9,8 +9,11 @@ import './Board.css';
 class Board extends Component {
     constructor(props) {
         super(props);
-        let rows = props.size ? props.size[0] : 10;
-        let columns = props.size ? props.size[1] : 20;
+        if (!props.size) {
+            alert('No size input, use default size 10 * 20');
+        }
+        let rows = props.size ? parseInt(props.size[0]) : 10;
+        let columns = props.size ? parseInt(props.size[1]) : 20;
         let grid = this.makeGrid(rows, columns);
         this.seed(rows, columns, grid);
         let cells = this.updateLivingCells(rows, columns, grid);
@@ -22,8 +25,11 @@ class Board extends Component {
             generation: 0,
             livingCells: cells,
             displayHeatmap: 0,
+            running: 0,
         };
     }
+
+    componentDidMount() {}
 
     makeGrid = (rows, columns) => {
         let grid = new Array(rows);
@@ -82,6 +88,7 @@ class Board extends Component {
             grid: next,
             generation: generation + 1,
             livingCells: newLivingCells,
+            running: 1,
         });
     };
 
@@ -115,7 +122,7 @@ class Board extends Component {
             }
         }
 
-        this.setState({ grid });
+        // this.setState({ grid });
     };
 
     start = () => {
@@ -124,17 +131,23 @@ class Board extends Component {
             this.step,
             this.props.frequency ? this.props.frequency : 100
         );
-        this.setState({ intervalId });
+        this.setState({ intervalId, running: 1 });
     };
 
     pause = () => {
         clearInterval(this.state.intervalId);
+        this.setState({ running: 0 });
     };
 
     reset = () => {
         const { rows, columns } = this.state;
         let grid = this.makeGrid(rows, columns);
-        this.setState({ grid: grid, generation: 0, livingCells: 0 });
+        this.setState({
+            grid: grid,
+            generation: 0,
+            livingCells: 0,
+            running: 0,
+        });
     };
 
     toggleCell = (x, y) => {
@@ -160,6 +173,7 @@ class Board extends Component {
             generation,
             livingCells,
             displayHeatmap,
+            running,
         } = this.state;
         return (
             <div style={{ textAlign: 'center' }}>
@@ -172,7 +186,7 @@ class Board extends Component {
                 <button onClick={this.toggleDisplay}>
                     {displayHeatmap ? 'Show Black-White' : 'Show Heatmap'}
                 </button>
-                <Frequency />
+                <Frequency running={running} />
                 <Grid
                     grid={grid}
                     columns={columns}

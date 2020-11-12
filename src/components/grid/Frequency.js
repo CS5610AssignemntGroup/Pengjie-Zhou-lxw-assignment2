@@ -21,8 +21,14 @@ class Frequency extends React.Component {
             alert('Frequency should be set between 50ms and 2000ms');
             this.setState({ frequency: 100 });
         }
-        alert('Frequency changed');
-        this.props.inputFrequency(frequency);
+        if (this.props.running === 1) {
+            alert(
+                "Can't set frequency during running! Please click pause first."
+            );
+        } else {
+            alert('Frequency changed');
+            this.props.inputFrequency(frequency);
+        }
         e.preventDefault();
     };
 
@@ -45,6 +51,7 @@ class Frequency extends React.Component {
 
 Frequency.propTypes = {
     inputFrequency: PropTypes.func,
+    running: PropTypes.number,
 };
 
 const mapStateToProps = state => {

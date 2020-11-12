@@ -15,13 +15,13 @@ class Home extends Component {
 
     handleRowChange = e => {
         let newSize = this.state.size;
-        newSize[0] = parseInt(e.target.value);
+        newSize[0] = e.target.value;
         this.setState({ size: newSize });
     };
 
     handleColumnChange = e => {
         let newSize = this.state.size;
-        newSize[1] = parseInt(e.target.value);
+        newSize[1] = e.target.value;
         this.setState({ size: newSize });
     };
 
