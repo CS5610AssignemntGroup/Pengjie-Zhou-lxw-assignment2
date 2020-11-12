@@ -20,7 +20,7 @@ It was a challenge for us to visualize the heatmap. Based on the fact that the c
 
 3. Structure of the App
  
- We initially took https://github.com/kelvin-mai/react-game-of-life as a reference for structuring the algorithms of Conway's Game, and completed all the other      parts of the program independently.
+ We refer https://github.com/kelvin-mai/react-game-of-life for the algorithms structure of Conway's Game, and completed all the other parts of the assignment independently.
  
 
 **Given more time, what additional features, functional or design changes would you make?**
